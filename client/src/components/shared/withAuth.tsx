@@ -19,32 +19,21 @@ const withAuth =
       }
     }, [loading]);
 
-    // ........................................ approach 1 -> seperate logic based on auth status // .......................
-    // Protected page -> Dashboard and orders
+    
     if (isAuth) {
       if (loading) return <Loading />;
       if (user) return <WrappedComponent {...props} />;
-      return null; // redirect happening
+      return null; 
     }
 
-    // Public page -> Signin and signup
     if (!isAuth) {
-      // If user logged in and not loading → redirect will handle
-      // If not logged in → show page immediately
-      if (!loading && !user) return <WrappedComponent {...props} />; // optional if you want to block during login check
+     
+      if (!loading && !user) return <WrappedComponent {...props} />;
       return <Loading />;
     }
 
     return null;
 
-    // ........................................ approach 2 -> combine logic based on auth status // ........................
-    // return user && isAuth ? (
-    //   <WrappedComponent {...props} /> // dashboard, order pages
-    // ) : !user && !isAuth && !loading ? (
-    //   <WrappedComponent {...props} /> // signin and signup pages
-    // ) : (
-    //   <Loading />
-    // );
   };
 
 const Loading = () => {
