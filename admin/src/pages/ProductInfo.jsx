@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Layout from '../components/Layout';
-import { LoaderCircle, Pencil, X } from 'lucide-react';
+import { LoaderCircle, MoveLeft, Pencil, X } from 'lucide-react';
 import ImageContainer from "../components/ImageContainer"
 
 const ProductInfo = () => {
@@ -76,6 +76,8 @@ const ProductInfo = () => {
     <Layout>
       <div className="flex flex-col gap-2">
         <div className="flex justify-between items-center">
+        
+        <div className='w-8 h-8 flex justify-center items-center border-2 rounded-full'> <Link to={"/products"}><MoveLeft/></Link></div>
           <h1 className="text-2xl font-bold">Product Details</h1>
 
           <button className="bg-blue-400 cursor-pointer p-1 text-sm px-2 rounded text-white font-semibold flex items-center gap-2">

@@ -3,9 +3,7 @@ import { RefreshCw } from "lucide-react";
 import { useEffect, type ElementType } from "react";
 import { useNavigate } from "react-router-dom";
 
-const withAuth =
-  (WrappedComponent: ElementType, isAuth = true) =>
-  (props: any) => {
+const withAuth = (WrappedComponent: ElementType, isAuth = true) => (props: any) => {
     const navigate = useNavigate();
     const { user, loading } = useAuth();
 

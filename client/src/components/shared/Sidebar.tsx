@@ -1,7 +1,6 @@
 
 import useAppStore from "@/store/app.store";
 import { X } from "lucide-react";
-import React from "react";
 import { Separator } from "../ui/separator";
 
 const Sidebar = () => {

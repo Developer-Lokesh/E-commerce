@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
     res.send("I am working on E-commerce store");
 });
 
-app.use("", publicRoutes)
+app.use("", publicRoutes);
 
 app.use("/auth", authRoutes);
 
