@@ -23,14 +23,14 @@ const SignIn = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`
+          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
-        // body: JSON.stringify(input)
+        body: JSON.stringify(input)
       });
       const data = await res.json();
 
       if (!data.success) {
-        alert(data.data.message || "Something went wrong")
+        alert(data.message || "Something went wrong")
       }
 
       setInput(

@@ -19,14 +19,20 @@ const Navbar = () => {
           <h1 className="text-2xl font-bold">Devil's Vault</h1>
         </Link>
       </div>
-
+    <div>
+      <div>
+        <select name="All" id="">
+          <option value=""></option>
+        </select>
+      </div>
+    </div>
       {user ? (
         <Avatar className="cursor-pointer">
           <AvatarFallback className="uppercase">{user.name[0]}</AvatarFallback>
         </Avatar>
       ) : (
         <Button variant="link" className="cursor-pointer">
-          <Link to="/signin">Sign In</Link>
+          <Link to="/login">Sign In</Link>
         </Button>
       )}
     </div>

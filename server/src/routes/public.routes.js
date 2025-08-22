@@ -3,13 +3,13 @@ const {getAllCategories,getAllProducts,getProductByCategory,getProductBySlug} = 
 const router = express.Router();
 
 // List all product
-router.get("/product", getAllProducts);
+router.get("/products", getAllProducts);
 
 // List all categories
 router.get("/categories", getAllCategories);
 
 // Products by category
-router.get("/product/:category", getProductByCategory);
+router.get("/products/:category", getProductByCategory);
 
 // Product details
 router.get("/product/:slug", getProductBySlug);

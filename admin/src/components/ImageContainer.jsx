@@ -54,6 +54,8 @@ const ImageContainer = ({ productId, limit }) => {
     }
   };
 
+  // image db operation
+
   const handleUpload = async () => {
     setLoading(true);
     const data = await Promise.allSettled(files.map((file) => uploadImage(file)));
