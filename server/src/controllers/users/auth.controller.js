@@ -31,7 +31,7 @@ const register = async (req, res) => {
       });
     }
 
-    console.log(error)
+    // console.log(error)
 
     return res.json({
       success: false,
@@ -75,7 +75,12 @@ const login = async (req, res) => {
 
     // generate token
 
-    const {accessToken,refreshToken} = generateToken({id:user._id, name:user.name, email:user.email, role:user.role})
+    const {accessToken,refreshToken} = generateToken({
+      id:user._id,
+       name:user.name, 
+       email:user.email, 
+       role:user.role
+      });
 
   
 
