@@ -8,20 +8,21 @@ import { Heart, Loader, ShoppingCart } from 'lucide-react';
 import { useState } from 'react';
 // import React from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { toast } from 'sonner';
 
 const ProductInfo = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const {user, cart, addCartItem, removeCartItem} = useUserStore();
-  // console.log(slug)
   const url = import.meta.env.VITE_SERVER_URL;
   const { data, loading } = useFetch(`${url}/product/${slug}`);
   
-  const { data: products, loading: productsLoading } = useFetch("http://localhost:4000/products");
-
-
+  const { data: products, loading: productsLoading } = useFetch(`${url}/products`);
+  
   const [readMore, setReadMore] = useState(false);
-
+  
+  console.log(user, "productInfo")
+  // console.log(slug)
   if (loading && !data) {
     return (
       <p>Loading</p>
@@ -33,12 +34,29 @@ const ProductInfo = () => {
   }
 
   const addToCart = async () => {
+    //my solution 
+     if (loading) {
+    toast("Please wait, loading user info...");
+    return;
+  }
     if(!user){
       navigate(`/login?redirect=/product/${slug}`);
       return;
     }
+//  item in client cart
+    addCartItem({
+      item:{
+        _id:data._id,
+        title:data.title,
+        price:data.price,
+        mrp:data.mrp,
+        images:[data.images[0]],
+        slug:data.slug,
+      },
+      quantity:1,
+    });
 
-    addCartItem({item:data._id, quantity:1});
+// add item into server cart
 
   try {
     const res = await fetch(`${url}/user/cart`, {
@@ -55,13 +73,15 @@ const ProductInfo = () => {
     if(!json.success){
       alert("Something went wrong");
       removeCartItem(data._id);
-      return;
+      return false;
     }
-  } catch {
-    console.log("Something went wrong");
+    return true;
+  } catch (error) {
+    console.log(error || "Something went wrong");
     alert("Something went wrong")
 
     removeCartItem(data._id);
+    return false;
   }
   }
 
@@ -76,7 +96,25 @@ const ProductInfo = () => {
       </div>
     );
 
-    const isinCart = cart?.some((item) => item.item === data._id)
+    const isinCart = cart?.some((item) => item.item._id === data._id);
+
+    const handleBuyNow = async () => {
+      // if user exist 
+      if(!user){
+        navigate(`/login?redirect=/product/${slug}`);
+        return;
+      }
+
+      if(isinCart){
+        navigate(`/cart`);
+      } 
+      else{
+        const added = await addToCart();
+        if(added) {
+          navigate(`/cart`);
+        }
+      }
+    };
 
   return (
     <div className='flex justify-center'>
@@ -109,7 +147,7 @@ const ProductInfo = () => {
             onClick={isinCart ? () => navigate("/cart") : addToCart}>
               <ShoppingCart />  {isinCart ? "Added! Go to Cart" : "Add to cart"}
             </Button>
-            <Button className="flex-1 bg-orange-500 hover:bg-orange-600 cursor-pointer">Buy Now</Button>
+            <Button className="flex-1 bg-orange-500 hover:bg-orange-600 cursor-pointer" onClick={handleBuyNow}>Buy Now</Button>
           </div>
         </div>
       </div>

@@ -2,8 +2,8 @@ import withAuth from "@/components/shared/withAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import useUserStore from "@/store/user.store";
-import type { IWishlist } from "@/types";
-import { useEffect } from "react";
+import type { IWishlist } from "@/types/types";
+// import type { IWishlist } from "@/types";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 

@@ -28,7 +28,7 @@ const SignIn = () => {
         body: JSON.stringify(input)
       });
       const data = await res.json();
-      // console.log(data, "Sign in Page")
+      console.log(data, "Sign in Page")
 
       if (!data.success) {
         alert(data.message || "Something went wrong")
