@@ -63,7 +63,7 @@ const ProductInfo = () => {
       method:"POST",
       headers:{
         "Content-Type": "application/json",
-        Authorization: `bearer ${localStorage.getItem("token")}`
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body:JSON.stringify({item: data._id, quantity:1})
     });

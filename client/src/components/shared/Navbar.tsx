@@ -1,6 +1,6 @@
 // import React from "react";
 import { Button } from "../ui/button";
-import { AlignJustify, Bookmark, Heart, ShoppingCart, Sidebar as SidebarIcon } from "lucide-react";
+import { AlignJustify, Bookmark, Heart, Search, ShoppingCart, Sidebar as SidebarIcon } from "lucide-react";
 import useAppStore from "@/store/app.store";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
@@ -29,6 +29,11 @@ const Navbar = () => {
           <h1 className="text-2xl font-bold">Devil's Vault</h1>
         </Link>
       </div>
+      <div className="flex">
+        <input type="search" placeholder="Search Product..." className="border-2 border-gray-700 rounded " />
+        <button className="w-8 h-8 bg-amber-300 flex justify-center items-center hover:bg-amber-400"><Search/></button>
+      </div>
+
 
       {user ? (
         <div className="flex items-center gap-3">

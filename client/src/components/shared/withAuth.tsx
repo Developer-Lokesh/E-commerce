@@ -15,7 +15,7 @@ const withAuth =
 
     useEffect(() => {
       if (!user && !loading && isAuth) {
-        navigate(`/signin`);
+        navigate(`/login`);
       }
 
       if (user && !isAuth) {
