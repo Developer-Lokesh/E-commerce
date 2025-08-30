@@ -22,9 +22,19 @@ const ProductInfo = () => {
 
   const [readMore, setReadMore] = useState(false);
 
+  if (loading && !data) {
+    return (
+      <p>Loading</p>
+    )
+  }
+
+  if (!data) {
+    return (<p>No product found!</p>)
+  }
+
   const addToCart = async () => {
     if(!user){
-      navigate(`login?redirect=/product${slug}`);
+      navigate(`/login?redirect=/product/${slug}`);
       return;
     }
 
@@ -40,6 +50,7 @@ const ProductInfo = () => {
       body:JSON.stringify({item: data._id, quantity:1})
     });
     const json = await res.json();
+    console.log("This is json", json)
 
     if(!json.success){
       alert("Something went wrong");
@@ -94,8 +105,9 @@ const ProductInfo = () => {
          {/* ratting */}
 
           <div className="flex gap-2 w-full justify-between">
-            <Button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black cursor-pointer">
-              <ShoppingCart /> Add to Cart
+            <Button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-black cursor-pointer"
+            onClick={isinCart ? () => navigate("/cart") : addToCart}>
+              <ShoppingCart />  {isinCart ? "Added! Go to Cart" : "Add to cart"}
             </Button>
             <Button className="flex-1 bg-orange-500 hover:bg-orange-600 cursor-pointer">Buy Now</Button>
           </div>
@@ -142,7 +154,7 @@ const OtherProduct = (data: IProduct) => {
           <Heart className="text-red-400" />
         </div>
         <div className="w-full h-[250px]">
-          <img src={data?.images[0]?.url} alt="" className="w-full h-full object-cover" />
+          <img src={data?.images[0]?.url } alt="" className="w-full h-full object-cover" />
         </div>
         <div className="p-2">
           <h1 className="text-sm font-semibold line-clamp-2">{data.title}</h1>

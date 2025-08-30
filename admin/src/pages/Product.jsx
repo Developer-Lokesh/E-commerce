@@ -88,7 +88,7 @@ const Products = () => {
       <div className="flex justify-center items-center">{!data.length && loading && <h1>Loading...</h1>}</div>
 
       {data.length !== 0 && (
-        <div className="overflow-x-auto">
+        <div className="overflow-auto h-full">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>

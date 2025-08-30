@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <div className='flex'>
         <DesktopSidebar/>
         <MobileSibebar/>
-        <div className='flex-1 p-3'>{children}</div>
+        <div className='flex-1 p-3 h-[calc(100vh-50px)] overflow-hidden'>{children}</div>
       </div>
     </div>
   );

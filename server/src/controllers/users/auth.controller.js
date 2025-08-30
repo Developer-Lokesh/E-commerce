@@ -54,6 +54,7 @@ const login = async (req, res) => {
 
   try {
     const user = await getUserByEmail({email});
+    // console.log(user);
 
     // check user
     if (!user) {

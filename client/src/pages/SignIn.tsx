@@ -28,6 +28,7 @@ const SignIn = () => {
         body: JSON.stringify(input)
       });
       const data = await res.json();
+      // console.log(data, "Sign in Page")
 
       if (!data.success) {
         alert(data.message || "Something went wrong")
@@ -62,7 +63,7 @@ const SignIn = () => {
         </div>
         <div className={style.subContainerbtn}>
           <button className={style.button}>Login</button>
-          <p className={style.p}>Don't have an account <Link to="/signup">SignUp</Link> </p>
+          <p className={style.p}>Don't have an account <Link to="/signup" className='text-blue-600'>SignUp</Link> </p>
         </div>
       </div>
     </form>

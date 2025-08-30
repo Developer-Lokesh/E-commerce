@@ -19,11 +19,11 @@ if (!loading && !data) {
   return <p>someting went wrong!</p>
 }
 
-  // console.log(data, "product by category");
-  console.log(data.category.name);
-  console.log(data.products[0].title);
-  // console.log(product.price);
-  // console.log(data.products.mrp);
+  console.log(data, "product by category");
+  // console.log(data.category.name);
+  // console.log(data.products[1].title);
+  // console.log(data.products[0].price);
+  // console.log(data.products[1].mrp);
 
 
   return (
