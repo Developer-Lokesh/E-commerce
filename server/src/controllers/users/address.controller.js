@@ -13,13 +13,13 @@ const fetchAddresses = async (req, res) => {
 };
 
 const addAddress = async (req, res) => {
-  const { fullName, phone, line1, line2, landmark, city, postalCode, country, user } = req.body;
+  const { fullName, phone, line1, line2, landmark, city, postalCode, country} = req.body;
 
-  if (!fullName || !phone || !line1 || !line2 || !landmark || !city || !postalCode || !country || !user) {
+  if (!fullName || !phone || !line1 || !line2 || !landmark || !city || !postalCode || !country) {
     return res.json({
       success: false,
       error: "All fields are required",
-      required: ["fullName", "phone", "line1", "line2", "landmark", "city", "postalCode", "country", "user"],
+      required: ["fullName", "phone", "line1", "line2", "landmark", "city", "postalCode", "country"],
     });
   }
 

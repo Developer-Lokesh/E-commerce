@@ -1,3 +1,4 @@
+
 import { Link, useNavigate } from 'react-router-dom'
 import style from '../style/auth.module.css'
 import { useState } from 'react'

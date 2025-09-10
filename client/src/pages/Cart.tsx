@@ -19,7 +19,7 @@ const Cart = () => {
       {cart && cart.length === 0 && <p>Cart is empty</p>}
       {cart?.length && (
         <div className="flex gap-2 flex-col md:flex-row">
-          <div className="flex gap-2 flex-wrap flex-1 h-fit">
+          <div className="flex gap-2 flex-col flex-1 h-fit">
             {cart && cart.map((product: any) => <Product key={product._id} {...product} />)}
           </div>
 
@@ -116,8 +116,8 @@ const Product = (data: ICart) => {
     }
   };
   return (
-    <Card className="relative p-2 overflow-hidden flex flex-row gap-2">
-      <div className="w-[100px] h-full rounded overflow-hidden">
+    <Card className="relative p-2 overflow-hidden flex-1 flex-row gap-2 ">
+      <div className="w-[100px] h-full rounded overflow-hidden ">
         <img src={data.item.images[0].url} alt="" className="w-full h-full object-cover" />
       </div>
       <div className="flex flex-col justify-between w-full">
